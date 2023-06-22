@@ -1,5 +1,5 @@
 ---
-title: "Workflow to create risk and confidence maps for `r params$species`"
+title: "Risk and confidence maps for `r params$species`"
 author: "Amy J.S Davis"
 date: "`r Sys.Date()`"
 output:
@@ -276,8 +276,8 @@ global_train <- caretList(
 ))
 ```
 ```{r print_globalModelResults,warning=FALSE}
-modelResults<-resamples(global_train)
-summary(modelResults)# displays accuracy of each model
+GlobalModelResults<-resamples(global_train)
+summary(GlobalModelResults)# displays accuracy of each model
 modelCor(resamples(global_train))# shows correlation among models.Weakly correlated algorithms are persuasive for stacking them in ensemble.
 ```
 
@@ -525,8 +525,8 @@ hideout<-capture.output(model_train_habitat <- caretList(
 ### Display model evaluation statistics
 
 ```{r show_euModel_accuracy}
-modelResults1<-resamples(model_train_habitat)
-summary(modelResults1)
+EU_ModelResults1<-resamples(model_train_habitat)
+summary(EU_ModelResults1)
 modelCor(resamples(model_train_habitat))
 ```
 
@@ -545,8 +545,8 @@ model_train_habitat1 <- caretList(
   trControl=control,
    tuneList=mylist)
 
-modelResults1<-resamples(model_train_habitat1)
-summary(modelResults1)
+EU_Ens_ModelResults1<-resamples(model_train_habitat1)
+summary(EU_Ens_ModelResults1)
 modelCor(resamples(model_train_habitat1))
 
 set.seed(456)
@@ -767,6 +767,8 @@ diag(occ.dists.inv) <- 0
 Moran.I(res.best.df$hab.res,occ.dists.inv,scaled=TRUE,alternative="greater")
 ```
 
+### Code for conformal prediction functions
+
 ```{r conformalPredictionfunctions,echo=FALSE}
 # functions needed for conformal prediction function
 
@@ -816,7 +818,7 @@ extractVals<-function(predras){
 }
 ```
 
-### Code for class conformal prediction function
+
 
 ```{r ClassConformalPrediction,echo=FALSE}
 classConformalPrediction<-function(x,y){
@@ -894,7 +896,7 @@ rcp85.conf.map<-confidenceMaps(pvalsdf_rcp85,taxonkey,taxonName,maptype="rcp85_c
 
 ### Model evalution summary
 ```{r export ModelEvaluation}
-meanResults<-summary(modelResults1)
+meanResults<-summary(EU_Ens_ModelResults1)
 eu_accuracy<-meanResults$statistics$Accuracy
 eu_kappa<-meanResults$statistics$Kappa
 
