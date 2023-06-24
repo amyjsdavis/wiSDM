@@ -328,12 +328,37 @@ plot(occ.eu,add=TRUE)
 
 ### Create RasterStack of European climate variables from RMI
 
-```{r create euclimate_stack}  
+#option 1. stack all available climate data (default)
+```{r stack all_euclimate_preds}  
 rmiclimrasters <- list.files((here("./data/external/climate/rmi_corrected")),pattern='tif',full.names = T) 
-rmiclimpreds <- stack(rmiclimrasters)
+rmiclimrasters #shows all available climate data
+rmiclimpreds <- stack(rmiclimrasters) #includes all available climate data
 
 ```
+#option 2. stack selected climate data
+```{r stack selected_euclimate_preds}  
 
+# delete or comment any variables that should be excluded from the raster stack
+climate.vars<-list("anngdd100.tif",
+                         "annprecip_eea.tif",
+                         "annpvarrecip_eea.tif",
+                         "anntemp_eea.tif",
+                         "dristprec.tif",
+                         "maxtemp.tif",        
+                         "mintemp.tif",
+                         "pet100.tif",
+                         "SolRad100.tif",
+                         "temprang.tif",
+                         "tempseas.tif",
+                         "varSolRad100.tif",   
+                          "wettprec.tif"
+  
+)
+
+climate.vars.selected<-paste0(here("./data/external/climate/rmi_corrected"),"/", climate.vars)
+rmiclimpreds<-stack(climate.vars) 
+
+```
 
 ### Use SDMtab command from the SDMPlay package to remove duplicates per 1km grid cell 
 ```{r remove_eu_duplicates,message=FALSE,error=TRUE}
