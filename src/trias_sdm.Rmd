@@ -890,8 +890,21 @@ rcp26.conf.map<-confidenceMaps(pvalsdf_rcp26,taxonkey,taxonName,maptype="rcp26_c
 rcp45.conf.map<-confidenceMaps(pvalsdf_rcp45,taxonkey,taxonName,maptype="rcp45_conf")
 rcp85.conf.map<-confidenceMaps(pvalsdf_rcp85,taxonkey,taxonName,maptype="rcp85_conf")
 ```
+### Mask areas of below a set confidence level  
 
+```{r maskLowConfidence,fig.show="hold"}
+# Cutoff for "high" confidence can be modified below. cutoff should be a value between 0 and 1
+cutoff<-0.7
 
+brks <- c(0,cutoff,1.0) 
+  nb <- length(brks)
+  cols<-c("gray","red2")
+  
+hist.conf.thresh.map<-confidenceMaps(pvalsdf_hist,taxonkey,taxonName,maptype="hist_conf_thresh")
+rcp26.conf.thresh.map<-confidenceMaps(pvalsdf_rcp26,taxonkey,taxonName,maptype="rcp26_conf_thresh")
+rcp45.conf.thresh.map<-confidenceMaps(pvalsdf_rcp45,taxonkey,taxonName,maptype="rcp45_conf_thresh")
+rcp85.conf.thresh.map<-confidenceMaps(pvalsdf_rcp85,taxonkey,taxonName,maptype="rcp85_conf_thresh")
+```
 
 
 ### Model evalution summary
