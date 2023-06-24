@@ -614,6 +614,9 @@ exportPNG(ens_pred_hab_eu1,taxonkey,taxonName=taxonName,"hist.png")
   pal <- colorRampPalette(rev(brewer.pal(8, 'Spectral')))
    cols<-pal(nb)
   plot(ens_pred_hab_eu1, breaks=brks, col=cols,lab.breaks=brks)
+   plot(euocc1,pch=1,cex=0.50,add=TRUE)#plots species presences comment this line to hide
+  plot(euocc_pseudoAbs,pch=2,cex=0.50,add=TRUE)#plots species pseudoabsences comment this line to hide
+  
  
 ```
 
@@ -635,7 +638,9 @@ brks <- seq(0, 1, by=0.1)
   pal <- colorRampPalette(rev(brewer.pal(11, 'Spectral')))
   cols<-pal(nb)
   plot(ens_pred_hab1, breaks=brks, col=cols,lab.breaks=brks)
-   plot(euocc,pch=3,cex=0.75,add=TRUE)
+  plot(euocc1,pch=1,cex=0.75,add=TRUE)
+  #plot(euocc_pseudoAbs,pch=2,cex=0.75,add=TRUE)
+  
 
 ```
 
@@ -893,7 +898,7 @@ rcp85.conf.map<-confidenceMaps(pvalsdf_rcp85,taxonkey,taxonName,maptype="rcp85_c
 ### Mask areas of below a set confidence level  
 
 ```{r maskLowConfidence,fig.show="hold"}
-# Cutoff for "high" confidence can be modified below. cutoff should be a value between 0 and 1
+# Cutoff for "high" confidence can be modified below. Cutoff should be a value between 0 and 1. Values that are less than the cutoff are shown in gray.
 cutoff<-0.7
 
 brks <- c(0,cutoff,1.0) 
