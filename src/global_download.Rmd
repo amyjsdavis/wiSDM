@@ -68,7 +68,8 @@ basis_of_record <- c(
   "HUMAN_OBSERVATION",
   "PRESERVED_SPECIMEN", 
   "UNKNOWN", 
-  "MACHINE_OBSERVATION"
+  "MACHINE_OBSERVATION",
+  "OCCURRENCE"
 )
 ```
 
@@ -78,7 +79,7 @@ Occurrences with a valid year:
 
 ```{r define_year_eu}
 year_begin <- 1976
-year_end <-2020
+year_end <-2011
 ```
 
 ## Geographic coordinates
