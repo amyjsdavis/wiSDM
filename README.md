@@ -52,8 +52,7 @@ Our workflow requires only a species name and generates an ensemble of machine l
 
 Inputs required run the workflow:
 1.	Species name and the GBIF taxon Key (which can be retrieved using the workflow). A list of species can be used to retrieve global occurrences for each species using the global_download.Rmd 
-2.	Only European level cube is needed for workflow, but can generate Belgium only cube to determine if species occurrence meeting modeling criteria
-3.	Predictor data (download using the links below )
+2.	Predictor data (download using the links below )
 Download CHELSA data: https://envicloud.wsl.ch/#/?prefix=chelsa%2Fchelsa_V1%2Fclimatologies 
 Download TrIAS EU Climate data from Zenodo: https://doi.org/10.5281/zenodo.3694065
 Download habitat predictors from Zenodo: https://doi.org/10.5281/zenodo.7841324
