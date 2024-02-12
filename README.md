@@ -13,8 +13,6 @@ This repository contains the framework and R code in development for risk modell
 ├── data
 │   ├── external          : external files (e.g. climate rasters, occurrence data, GIS files) required to run the   model. Download via Zenodo (see below).
 │   └── processed         : Risk maps and associated files needed for reproducibility GENERATED
-│
-
 └── src                    : R Code
 ```
 
@@ -25,13 +23,14 @@ Although theoretically possible, this workflow is not applied to all species lis
 2) Climate and habitat raster data files downloaded from Zenodo (links will be provided when data is available)
 3) R studio installed in your computer.
 4) After cloning this repository, add folders to the existing folder structure shown above as shown below. This will allow you to use the relative path structure in the trias_sdm.R file.
+``` 
 ├── data
     ├── external
           ├── bias_grids (Global taxonomic occurrence grids, downloaded from Zenodo here )
           ├── climate (put climate rasters downloaded from Zenodo here)
           ├── GIS (GIS data downloaded from Zenodo)
           ├── habitat (put habitat rasters downloaded from Zenodo here)
- 
+ ```
  ## Workflow  
  
 The automated workflow can be divided in three sections:
